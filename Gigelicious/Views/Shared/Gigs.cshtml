@@ -1,0 +1,123 @@
+﻿@model Gigelicious.ViewModels.GigViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>@Model.Heading</h2>
+@using (Html.BeginForm("search", "gigs"))
+{
+
+
+    <div class="input-group">
+
+
+
+        @Html.TextBoxFor(m => m.Search, new { @class = "form-control", placeholder = "Search for .." })
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Go!</button>
+        </span>
+
+
+    </div>
+}
+<ul id="#gigs" class="gigs voffset5">
+    @foreach (var gig in Model.UpCominGigs)
+    {
+        <li>
+            <div class="date">
+                <div class="month">@gig.DateTime.ToString("MMM")</div>
+                <div class="day">@gig.DateTime.ToString("d ")</div>
+            </div>
+
+            <div class="details">
+
+                
+                   
+               
+                
+                
+                <span class="artist">@Html.ActionLink(gig.Artist.Name, "Detail", "Home", new {id = gig.Id}, null)</span>
+                
+                
+
+
+
+
+                @if (gig.IsCancelled)
+                {
+                    <span class="label label-warning">Cancelled</span>
+                }
+                <span class="genre">@gig.Genre.Name</span>
+                @if (Model.IsAuthenticated)
+                {
+                    if (!gig.IsCancelled)
+                    {
+                        <button data-gigid="@gig.Id" class="btn @(Model.Attendences.Contains(gig.Id) ? "btn-info" : "btn-default") btn-sm js-attend-button pull-right">Going?</button>
+                    }
+
+                    
+                }
+
+            </div>
+
+
+
+        </li>
+    }
+</ul>
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+
+
+            $(".js-attend-button").on("click",
+                function(e) {
+                    var $thisButton = $(e.target);
+                    var $gigid = $thisButton.attr("data-gigid");
+
+
+                    var toggleClass = function() {
+                        $thisButton.toggleClass('btn-info').toggleClass('btn-default')
+                    };
+                    var postAttendance = function() {
+                        $.post("/api/Attendance/", { 'gigId': $gigid })
+                            .done(toggleClass);
+                    }
+                    var deleteAttendance = function() {
+                        $.ajax({
+                            url: '/api/Attendance/' + $gigid,
+                            method: 'DELETE'
+
+                        }).done(toggleClass);
+
+                    };
+
+
+                    if ($thisButton.hasClass('btn-default'))
+                        postAttendance();
+                    else 
+                        deleteAttendance();
+
+                    
+
+
+                });
+
+
+            $(".js-follow-button").on("click",
+                function(e) {
+                    $thisButton = $(e.target);
+
+                    $.post("/api/Follow/", { "artistId": $thisButton.attr("data-artistid") }).done(
+                        function() { $thisButton.removeClass("btn-default").addClass("btn-danger").text("Following"); }
+                    );
+
+
+                });
+
+
+        });
+
+
+    </script>
+}

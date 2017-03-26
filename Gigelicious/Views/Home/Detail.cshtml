@@ -1,0 +1,59 @@
+﻿@model Gigelicious.ViewModels.DetailViewModel
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="detail detail-top-div clearfix">
+    <h3 class="detail">@Model.Gig.Artist.Name</h3>
+    @if (Model.IsAuthenticated)
+    {
+        <button data-artistId="@Model.Gig.ArtistId" class="detail btn @(Model.IsFollowing ? "btn-info" : "btn-default") btn-sm">Following</button>
+    }
+    
+</div>
+
+<h3 class="detail">Performing at @Model.Gig.Venue on @Model.Gig.DateTime.ToString("dd MMM yyyy")</h3>
+<br/>
+@if (Model.IsAuthenticated)
+{
+    <h4> @((Model.IsGoing) ? "You are attending this gig" : "You are not attending this gig")</h4>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function() {
+
+            $('.detail').on('click', 'button.detail',
+                function(e) {
+                    $theButton = $(e.target);
+                    $artistId = $theButton.attr('data-artistId');
+
+                    if ($theButton.hasClass("btn-default"))
+                    {
+
+
+                        $.post('/Api/Follow/', { 'artistId': $artistId })
+                            .done(function() { $theButton.toggleClass('btn-default').toggleClass('btn-info') });
+                    }
+
+                    else {
+
+                        $.ajax({
+                            url: '/Api/Follow/Delete',
+                            method: 'POST',
+                            data: {'artistId' : $artistId }
+                        })
+                            .done($theButton.toggleClass('btn-default').toggleClass('btn-info'));
+                    }
+
+                });
+
+        });
+    </script>
+}
+
+
+

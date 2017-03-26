@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Gigelicious.Models.ApplicationUser>
+@{
+    ViewBag.Title = "ArtistFollowing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ArtistFollowing</h2>
+<ul>
+    @foreach (var artist in Model)
+    {
+        <li>@artist.Name.ToString()</li>
+    }
+</ul>

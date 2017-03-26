@@ -1,0 +1,254 @@
+﻿body {
+    
+    padding-top: 90px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+/*OFF SETS*/
+.voffset1 { margin-top: 2px;}
+.voffset2 { margin-top: 5px;}
+.voffset3 { margin-top: 10px;}
+.voffset4 { margin-top: 20px;}
+.voffset5 { margin-top: 40px;}
+.voffset6 { margin-top: 60px;}
+
+
+
+
+
+/*BOOTSTRAP OVERRIDES*/
+.navbar-inverse {
+    background-color: #ff4342;
+    border-color: #ff4342;
+    
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+ul.nav.navbar-nav.navbar-right, .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    background-color: rgba(205, 40, 39, 0.55);
+}
+
+.navbar-inverse .navbar-nav > li > a , .navbar-inverse .navbar-brand{
+    color: #fff;
+}
+
+.relative {
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+        top: 25px;
+    font-size: 7px;
+    left: 23px;
+    padding: 3px 5px;
+    background-color: #a80a0a
+
+    -webkit-animation-duration: 3s;
+  -webkit-animation-delay: 3s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+
+
+.dropdown-menu {
+    box-shadow: none;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+
+
+
+
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, body {
+    font-family: Lato, Amiko, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    /*font-weight: 500;*/
+    line-height: 1.1;
+}
+
+body {
+        font-size: 17px;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    font-size: 17px;
+    height: 44px;
+    border-radius: 9px;
+    
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #2196f3
+
+}
+
+.field-validation-error {
+    color: red;
+    font-weight: bold;
+}
+
+.btn {
+    /*font-size: 17px;*/
+    border-radius: 9px;
+    /*padding: 7px 20px;*/
+}
+
+
+/* Site Specific  Home/Index ie list of all gigs*/
+
+.gigs {
+    list-style: none;
+
+}
+
+.gigs > li {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.gigs > li .date {
+    background-color: red;
+    text-align: center;
+    width: 60px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.gigs > li .date .month {
+    padding: 2px 6px;
+}
+
+.gigs > li .date .day {
+    background-color: #f7f7f7;  
+    color: #333;
+    padding: 7px 12px;
+}
+
+.gigs > li .details {
+    position: absolute;
+    top: 0px;
+    left: 70px;
+    
+}
+
+.gigs > li .details .artist {
+    display: block;
+    font-weight: bold;
+}
+
+.gigs > li .details .genre {
+    font-size: 13px
+}
+
+.gigs > li .options {
+    font-size: 14px;
+    display: none;
+}
+
+.gigs > li:hover .options {
+    display: block;
+}
+
+
+.popover-notifications > .popover-content > ul {
+    list-style: none;
+    padding: 0;
+    
+}
+
+.popover-notifications {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+
+}
+
+
+.popover-notifications > .popover-content > ul > li {
+    border-bottom: #ddd solid 1px;
+    padding: 10px 10px;
+}
+
+.popover-notifications > .popover-content > ul > li:last-child {
+    border-bottom: none;
+}
+
+.popover-notifications > .popover-content {
+    padding: 0;
+}
+
+.popover-notifications .highlight {
+    font-weight: bold;
+
+}
+.input-group { width: 300px;}
+.input-group > .form-control {
+    -webkit-transition: none;
+    transition: none;
+}
+.input-group > .input-group-btn > .btn {
+    line-height: 31px;
+}
+
+
+
+
+
+
+.detail-top-div > h3 {
+        float: left;
+    }
+.detail-top-div > .btn {
+        float: left;
+            
+                 margin-left: 5px;
+
+    }
+
+.detail {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+
+.clearfix::after{
+content:"";
+display: table;
+clear:both;
+}
